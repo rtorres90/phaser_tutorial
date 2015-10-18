@@ -23,13 +23,17 @@ function preload() {
     game.load.image('star', 'assets/star.png');
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 
+    
+
 }
 
 var player;
 var platforms;
 var cursors;
-
 var stars;
+
+var score = 0;
+var scoreText;
 
 function create() {
 
@@ -98,6 +102,7 @@ function create() {
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
     
+    scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 }
 
 function update() {
@@ -147,6 +152,8 @@ function collectStar (player, star) {
     // Removes the star from the screen
     star.kill();
 
+    score += 10;
+    scoreText.text = 'Score: ' + score;
 }
 
 </script>
